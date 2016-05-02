@@ -6,5 +6,5 @@ var Schema = mongoose.Schema;
 
 var user = mongoose.model('user',{
     email:String,
-    password:String,
-})
+    password:String
+});
