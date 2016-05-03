@@ -5,12 +5,14 @@ var postModel = require('../models/postModel');
 var messageModel = require('../models/postMessageModel');
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/test');
 
-var user = mongoose.model('user',{
+var userSchema = mongoose.model('user',{
     email:String,
     password:String
 });
+
+var User = mongoose.model('user', userSchema);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,7 +34,25 @@ router.post('/saveUser', function(req,res,next){
 });
 
 router.get('/logIn',function(req,res,next){
-  res.render('signup',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In'});
+  res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In'});
+});
+
+router.post('/userlogin',function(req,res,next){
+    console.log(req.body);
+    User.findOne({ email: req.body.email }, function(err, user){
+        if (!user){
+            res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In'});
+        }
+        else{
+            if(req.body.password === user.password){
+                req.session.user = user;
+                res.redirect('/');
+            }
+            else{
+                res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In'});
+            }
+        }
+    })
 });
 
 
