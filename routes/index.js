@@ -51,8 +51,25 @@ router.post('/userlogin',function(req,res,next){
 });
 
 router.get('/dashboard',function(req,res,next){
+    if (req.session && req.session.user) { // Check if session exists
+        // lookup the user in the DB by pulling their email from the session
+        User.findOne({ email: req.session.user.email }, function (err, user) {
+            if (!user) {
+                // if the user isn't found in the DB, reset the session info and
+                // redirect the user to the login page
+                req.session.reset();
+                res.redirect('/logIn');
+            } else {
+                // expose the user to the template
+                res.locals.user = user;
 
-        res.render("dashboard", {title:'Dashboard'});
+                // render the dashboard page
+                res.render('dashboard',{title:'Welcome to dashboard'});
+            }
+        });
+    } else {
+        res.redirect('/logIn');
+    }
 
 });
 
@@ -71,6 +88,11 @@ router.post('/savePage',function(req,res,next){
     newPost.save(function(err){
         if(err) throw err;
     });
+    var newMessage = PostMessage(req.body);
+    newMessage.save(function(err){
+        if(err) throw err;
+    });
+    
     res.redirect('/');
 
 });
