@@ -41,7 +41,7 @@ router.post('/userlogin',function(req,res,next){
         else{
             if(req.body.password === user.password){
                 req.session.user = user;
-                res.redirect('/dashboard',{title:"Dashboard",user});
+                res.redirect('/dashboard');
             }
             else{
                 res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In', error:'Wrong Password'});
