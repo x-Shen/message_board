@@ -3,6 +3,7 @@ var router = express.Router();
 //var userModel = require('../models/userModel');
 var postModel = require('../models/postModel');
 var messageModel = require('../models/postMessageModel');
+var session = require('client-sessions');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
@@ -26,7 +27,7 @@ router.get('/signUp',function(req, res, next){
 });
 
 router.post('/saveUser', function(req,res,next){
-    var newUser = new user(req.body);
+    var newUser = new User(req.body);
     newUser.save(function(err){
         if(err) throw err;
     })
@@ -45,8 +46,8 @@ router.post('/userlogin',function(req,res,next){
         }
         else{
             if(req.body.password === user.password){
-                req.session.user = user;
-                res.redirect('/');
+                //req.session.user = user;
+                res.redirect('/dashboard');
             }
             else{
                 res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In'});
@@ -54,6 +55,12 @@ router.post('/userlogin',function(req,res,next){
         }
     })
 });
+
+router.get('/dashboard',function(req,res,next){
+
+        res.render("dashboard", {title:'Dashboard'});
+
+})
 
 
 
