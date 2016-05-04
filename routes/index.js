@@ -11,8 +11,9 @@ mongoose.connect('mongodb://localhost/test');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Welcome to Message Board' }
-  );
+    Post.find(function(err,posts){
+        res.render('index', { title: 'Welcome to Message Board',posts });
+    });
 });
 
 router.get('/signUp',function(req, res, next){
@@ -92,7 +93,7 @@ router.post('/savePage',function(req,res,next){
     newMessage.save(function(err){
         if(err) throw err;
     });
-    
+
     res.redirect('/');
 
 });
