@@ -7,8 +7,9 @@
 </head>
 <body>
 <h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<p>Welcome to <%= title %> <%= user.email%></p>
 <h2>My Posts</h2>
+<a href="/newPost" class="btn btn-info">New Post</a>
 <table class="table table-striped">
     <tr>
         <th>Title</th>
