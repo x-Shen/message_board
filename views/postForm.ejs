@@ -11,9 +11,7 @@
 <form method="post" action="/savePage">
     <input type="hidden" name="id" value="<%= post.id %>"/>
     <input type="text" value="<%= post.title %>" name="title" placeholder="Post title" class="form-control" />
-    <textarea name="createdAt" placeholder="current time" class="form-control"><%= post.createdAt %></textarea>
-    <br/>
-    <input type="text" name="user" placeholder="Page user" value="<%= post.user %>" />
+    <textarea name="message" placeholder="new message" class="form-control"></textarea>
     <br />
     <button type="submit" class="btn btn-success">Save!</button>
 </form>
