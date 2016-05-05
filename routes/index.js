@@ -81,7 +81,8 @@ router.get('/newPost',function(req,res,next){
         id: '',
         user: ''
     };
-    res.render('postForm', {title: 'New Page!', post})
+    var user = req.session.user;
+    res.render('postForm', {title: 'New Page!', post, user})
 });
 
 router.post('/savePage',function(req,res,next){
@@ -90,6 +91,7 @@ router.post('/savePage',function(req,res,next){
         if(err) throw err;
     });
     var newMessage = PostMessage(req.body);
+    newMessage._post = newPost;
     newMessage.save(function(err){
         if(err) throw err;
     });
@@ -105,17 +107,19 @@ router.get('/post/:id', function(req,res,next){
         user:'',
         createdAt: '',
     };
-        PostMessage.find(':id',function(err,messages){
+        PostMessage.find('_post',function(err, messages){
             res.render('post',{title:'view post',messages,message})
         });
 });
 
 router.post('/saveMessage',function(req,res){
+    console.log(req.body);
+    //var id = req.params._post.id;
     var newMessage = PostMessage(req.body);
     newMessage.save(function(err){
         if(err) throw err;
     });
-    res.redirect('/post/:id');
+    res.redirect('/post/');
 });
 
 
