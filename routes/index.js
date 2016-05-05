@@ -98,6 +98,25 @@ router.post('/savePage',function(req,res,next){
 
 });
 
+router.get('/post/:id', function(req,res,next){
+    var message = {
+        _post:'',
+        message:'',
+        user:'',
+        createdAt: '',
+    };
+        PostMessage.find(':id',function(err,messages){
+            res.render('post',{title:'view post',messages,message})
+        });
+});
+
+router.post('/saveMessage',function(req,res){
+    var newMessage = PostMessage(req.body);
+    newMessage.save(function(err){
+        if(err) throw err;
+    });
+    res.redirect('/post/:id');
+});
 
 
 module.exports = router;

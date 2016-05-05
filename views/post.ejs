@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<% for(var i = 0; i < messages.length; i++) { %>
+<tr>
+    <td>
+        <%= messages[i].message %>
+        <%= messages[i].createdAt%>
+    </td>
+</tr>
+<% } %>
+<form method="post" action="/newMessage">
+    <input type="hidden" name="id" value="<%= message.id %>"/>
+    <textarea name="message" placeholder="new message" class="form-control"></textarea>
+    <br />
+    <button type="submit" class="btn btn-success">Save!</button>
+</form>
+</body>
+</html>
