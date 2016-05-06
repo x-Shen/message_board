@@ -26,8 +26,8 @@
       </td>
         <td><a href="/post/<%= posts[i].id %>">View Post</a></td>
       <td>
-        <a href="#<%= posts[i].id %>" class="btn btn-danger">X</a>
-        <a href="#<%= posts[i].id %>" class="btn btn-info">Update</a>
+        <a href="/deletePost/<%= posts[i].id %>" class="btn btn-danger">X</a>
+        <a href="/updatePost/<%= posts[i].id %>" class="btn btn-info">Update</a>
       </td>
     </tr>
     <% } %>

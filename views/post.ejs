@@ -16,7 +16,6 @@
 </tr>
 <% } %>
 <form method="post" action="/saveMessage">
-    <input type="hidden" name="id" value="<%= message.id %>"/>
     <textarea name="message" placeholder="new message" class="form-control"></textarea>
     <br />
     <button type="submit" class="btn btn-success">Save!</button>

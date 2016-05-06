@@ -109,19 +109,33 @@ router.get('/post/:id', function(req,res,next){
     };
     var id = req.params.id;
         PostMessage.find({'_post':id} ,function(err, messages){
-            res.render('post',{title:'view post',messages,message})
+            res.render('post',{title:'view post',messages, message})
         });
 });
 
-router.post('/saveMessage',function(req,res){
-    console.log(req.body);
-    //var id = req.params._post.id;
+router.post('/saveMessage/:id',function(req,res){
+    var id = req.params.id;
     var newMessage = PostMessage(req.body);
+    newMessage._post = id;
     newMessage.save(function(err){
         if(err) throw err;
     });
     res.redirect('/post/');
 });
 
+router.get('/deletePost/:id', function(req,res) {
+    Post.findByIdAndRemove(req.params.id, function(err) {
+        if(err) throw err;
+        res.redirect('/dashboard');
+    })
+});
+
+router.get('/updatePost/:id', function(req, res) {
+    var id = req.params.id;
+    Post.findById(id, function(err, post) {
+        if(err) throw err;
+        res.render('postForm', {title: 'Update: ' + post.title, post})
+    })
+});
 
 module.exports = router;
