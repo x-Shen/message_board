@@ -11,9 +11,9 @@
 <form method="post" action="/savePage">
     <input type="hidden" name="id" value="<%= post.id %>"/>
     <input type="text" value="<%= post.title %>" name="title" placeholder="Post title" class="form-control" />
-    <input name="post" value=<% post %>/>
+    <input type="hidden" name="user" value="<%= user.email%>">
     <textarea name="message" placeholder="new message" class="form-control"></textarea>
-    <input type="'hidden" name="user" value="<%= user.email%>">
+    <input name="post" value=<% post %>/>
     <button type="submit" class="btn btn-success">Save!</button>
 </form>
 

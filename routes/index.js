@@ -42,7 +42,7 @@ router.post('/userlogin',function(req,res,next){
         else{
             if(req.body.password === user.password){
                 req.session.user = user;
-                res.redirect('/dashboard');
+                res.redirect('/');
             }
             else{
                 res.render('login',{title:'Log In to Message Board',sub_title:'Please Fill the form to Log In', error:'Wrong Password'});
@@ -105,29 +105,40 @@ router.get('/post/:id', function(req,res,next){
         _post:'',
         message:'',
         user:'',
-        createdAt: '',
+        createdAt: ''
     };
     var id = req.params.id;
+    var user = req.session.user;
+    //var post = Post.findOne({'_id': id});
         PostMessage.find({'_post':id} ,function(err, messages){
-            res.render('post',{title:'view post',messages, message})
+            res.render('post',{title:'view post',messages, postId: id,user})
         });
 });
 
-router.post('/saveMessage/:id',function(req,res){
-    var id = req.params.id;
-    var newMessage = PostMessage(req.body);
-    newMessage._post = id;
+router.post('/saveMessage',function(req,res){
+    var data = {
+        _post: req.body.id,
+        message: req.body.message,
+        user: req.session.user
+    }
+    var newMessage = PostMessage(data);
     newMessage.save(function(err){
         if(err) throw err;
+        res.redirect('/post/'+req.body.id);
     });
-    res.redirect('/post/');
+
 });
 
 router.get('/deletePost/:id', function(req,res) {
-    Post.findByIdAndRemove(req.params.id, function(err) {
-        if(err) throw err;
-        res.redirect('/dashboard');
-    })
+
+    if(req.params.user===req.body.user){
+        Post.findByIdAndRemove(req.params.id, function(err) {
+            if(err) throw err;
+            res.redirect('/');
+        })
+    }
+
+
 });
 
 router.get('/updatePost/:id', function(req, res) {
