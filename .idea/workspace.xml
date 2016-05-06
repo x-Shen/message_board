@@ -4,7 +4,6 @@
     <list default="true" id="5a169da3-b2fb-4ab2-8489-9484b0d25c2c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/post.ejs" afterPath="$PROJECT_DIR$/views/post.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/postForm.ejs" afterPath="$PROJECT_DIR$/views/postForm.ejs" />
     </list>
@@ -50,8 +49,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+            <state relative-caret-position="266">
+              <caret line="113" column="3" selection-start-line="113" selection-start-column="3" selection-end-line="113" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -158,8 +157,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-6" />
-    <option name="y" value="43" />
+    <option name="x" value="-23" />
+    <option name="y" value="53" />
     <option name="width" value="1260" />
     <option name="height" value="690" />
   </component>
@@ -342,15 +341,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1462227792425</updated>
-      <workItem from="1462227793711" duration="18242000" />
+      <workItem from="1462227793711" duration="19011000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18242000" />
+    <option name="totallyTimeSpent" value="19011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="43" width="1260" height="690" extended-state="0" />
+    <frame x="-23" y="53" width="1260" height="690" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -401,7 +400,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -500,8 +499,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+        <state relative-caret-position="266">
+          <caret line="113" column="3" selection-start-line="113" selection-start-column="3" selection-end-line="113" selection-end-column="3" />
           <folding />
         </state>
       </provider>

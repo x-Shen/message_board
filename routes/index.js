@@ -107,7 +107,8 @@ router.get('/post/:id', function(req,res,next){
         user:'',
         createdAt: '',
     };
-        PostMessage.find('_post',function(err, messages){
+    var id = req.params.id;
+        PostMessage.find({'_post':id} ,function(err, messages){
             res.render('post',{title:'view post',messages,message})
         });
 });
